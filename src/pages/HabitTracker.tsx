@@ -9,7 +9,6 @@ import { useToast } from '@/hooks/use-toast'
 interface Habit {
   id: string
   label: string
-  icon: any
   completed: boolean
 }
 
@@ -20,16 +19,23 @@ interface HabitData {
   lastCompletedDate: string
 }
 
+const HABIT_ICONS: Record<string, any> = {
+  hydration: Droplets,
+  workout: Dumbbell,
+  skincare: Sparkles,
+  beard: Scissors
+}
+
 export default function HabitTracker() {
   const navigate = useNavigate()
   const { toast } = useToast()
   const [habitData, setHabitData] = useState<HabitData>({
     date: new Date().toISOString().split('T')[0],
     habits: [
-      { id: 'hydration', label: 'Hidratação (2L água)', icon: Droplets, completed: false },
-      { id: 'workout', label: 'Treino físico', icon: Dumbbell, completed: false },
-      { id: 'skincare', label: 'Cuidado pessoal', icon: Sparkles, completed: false },
-      { id: 'beard', label: 'Cuidados com a barba', icon: Scissors, completed: false }
+      { id: 'hydration', label: 'Hidratação (2L água)', completed: false },
+      { id: 'workout', label: 'Treino físico', completed: false },
+      { id: 'skincare', label: 'Cuidado pessoal', completed: false },
+      { id: 'beard', label: 'Cuidados com a barba', completed: false }
     ],
     streak: 0,
     lastCompletedDate: ''
