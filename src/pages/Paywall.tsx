@@ -11,13 +11,32 @@ export default function Paywall() {
   const { subscribe } = useSubscription()
   const { toast } = useToast()
 
-  const handleSubscribe = (plan: 'monthly' | 'annual') => {
-    subscribe(plan)
-    toast({
-      title: '🎉 Bem-vindo ao Premium!',
-      description: 'Agora você tem acesso completo ao AlphaCut'
-    })
-    navigate('/dashboard')
+  const handleSubscribe = async (plan: 'monthly' | 'annual') => {
+    try {
+      // IDs de preço da Stripe
+      const priceId = plan === 'monthly'
+        ? 'price_1SoZB3APD5yL4G6BRJop7DTO'  // Plano Mensal R$ 9,90
+        : 'price_1SoZC2APD5yL4G6BP1G2rS4K'  // Plano Anual R$ 49,00
+
+      // Redirecionar para o Checkout da Stripe
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ priceId })
+      })
+
+      const { url } = await response.json()
+
+      if (url) {
+        window.location.href = url
+      }
+    } catch (error) {
+      toast({
+        title: 'Erro ao processar pagamento',
+        description: 'Tente novamente em alguns instantes',
+        variant: 'destructive'
+      })
+    }
   }
 
   const features = [
