@@ -13,23 +13,27 @@ export default function Paywall() {
 
   const handleSubscribe = async (plan: 'monthly' | 'annual') => {
     try {
-      // IDs de preço da Stripe
-      const priceId = plan === 'monthly'
-        ? 'price_1Sp5g7APD5yL4G6B43MjUqsL'  // Plano Mensal R$ 9,90
-        : 'price_1Sp5gTAPD5yL4G6BmsWVgWHh'  // Plano Anual R$ 49,00
-
-      // Redirecionar para o Checkout da Stripe
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId })
+      // Simular processamento de pagamento
+      toast({
+        title: 'Processando assinatura...',
+        description: 'Aguarde um momento',
       })
 
-      const { url } = await response.json()
+      // Simular delay de processamento
+      await new Promise(resolve => setTimeout(resolve, 1500))
 
-      if (url) {
-        window.location.href = url
-      }
+      // Ativar assinatura localmente
+      subscribe(plan)
+
+      toast({
+        title: '🎉 Assinatura ativada com sucesso!',
+        description: `Você agora é Premium ${plan === 'monthly' ? 'Mensal' : 'Anual'}`,
+      })
+
+      // Redirecionar para o dashboard após 1 segundo
+      setTimeout(() => {
+        navigate('/dashboard')
+      }, 1000)
     } catch (error) {
       toast({
         title: 'Erro ao processar pagamento',

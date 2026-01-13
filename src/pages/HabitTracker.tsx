@@ -178,7 +178,7 @@ export default function HabitTracker() {
           </CardHeader>
           <CardContent className="space-y-4">
             {habitData.habits.map((habit) => {
-              const Icon = habit.icon
+              const Icon = HABIT_ICONS[habit.id]
               return (
                 <div
                   key={habit.id}
