@@ -90,7 +90,7 @@ export default function Paywall() {
             <CardContent>
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold text-white">R$ 9,90</span>
+                  <span className="text-5xl font-bold text-white">R$ 19,90</span>
                   <span className="text-zinc-500">/mês</span>
                 </div>
                 <p className="text-sm text-zinc-500 mt-1">Renovação automática</p>
@@ -134,11 +134,11 @@ export default function Paywall() {
             <CardContent>
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold text-white">R$ 49,00</span>
+                  <span className="text-5xl font-bold text-white">R$ 149,00</span>
                   <span className="text-zinc-500">/ano</span>
                 </div>
                 <p className="text-sm text-green-500 font-semibold mt-1">
-                  Equivale a R$ 4,08/mês - Economize R$ 69,80
+                  Equivale a R$ 12,42/mês - Economize R$ 89,80
                 </p>
               </div>
 
