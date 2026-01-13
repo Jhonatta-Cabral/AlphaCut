@@ -15,8 +15,8 @@ export default function Paywall() {
     try {
       // IDs de preço da Stripe
       const priceId = plan === 'monthly'
-        ? 'price_1SoZB3APD5yL4G6BRJop7DTO'  // Plano Mensal R$ 9,90
-        : 'price_1SoZC2APD5yL4G6BP1G2rS4K'  // Plano Anual R$ 49,00
+        ? 'price_1Sp5g7APD5yL4G6B43MjUqsL'  // Plano Mensal R$ 9,90
+        : 'price_1Sp5gTAPD5yL4G6BmsWVgWHh'  // Plano Anual R$ 49,00
 
       // Redirecionar para o Checkout da Stripe
       const response = await fetch('/api/create-checkout-session', {
@@ -90,8 +90,8 @@ export default function Paywall() {
             <CardContent>
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold text-white">R$ 9</span>
-                  <span className="text-zinc-500">,90/mês</span>
+                  <span className="text-5xl font-bold text-white">R$ 9,90</span>
+                  <span className="text-zinc-500">/mês</span>
                 </div>
                 <p className="text-sm text-zinc-500 mt-1">Renovação automática</p>
               </div>
@@ -134,7 +134,7 @@ export default function Paywall() {
             <CardContent>
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold text-white">R$ 49</span>
+                  <span className="text-5xl font-bold text-white">R$ 49,00</span>
                   <span className="text-zinc-500">/ano</span>
                 </div>
                 <p className="text-sm text-green-500 font-semibold mt-1">
