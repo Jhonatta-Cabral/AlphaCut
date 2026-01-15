@@ -34,7 +34,7 @@ export default function Analysis() {
     }
   }
 
-  const analyzeFace = (photoData: string): { faceShape: string; hairType: string } => {
+  const analyzeFace = (_photoData: string): { faceShape: string; hairType: string } => {
     // Simulação de análise de IA (em produção, isso seria uma API real)
     const faceShapes = ['Oval', 'Retangular', 'Redondo', 'Quadrado', 'Triangular']
     const hairTypes = ['Liso', 'Ondulado', 'Cacheado', 'Crespo']

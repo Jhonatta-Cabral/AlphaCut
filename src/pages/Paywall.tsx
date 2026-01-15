@@ -1,14 +1,12 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { useNavigate } from 'react-router-dom'
-import { useSubscription } from '@/contexts/SubscriptionContext'
 import { useToast } from '@/hooks/use-toast'
 import { Crown, Check, ArrowLeft, Zap } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 
 export default function Paywall() {
   const navigate = useNavigate()
-  const { subscribe } = useSubscription()
   const { toast } = useToast()
 
   const handleSubscribe = async (plan: 'monthly' | 'annual') => {

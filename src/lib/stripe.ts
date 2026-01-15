@@ -30,17 +30,9 @@ export async function createCheckoutSession(
     }
 
     const { sessionId } = await response.json()
-    const stripe = await stripePromise
 
-    if (!stripe) {
-      throw new Error('Stripe failed to load')
-    }
-
-    const { error } = await stripe.redirectToCheckout({ sessionId })
-
-    if (error) {
-      throw error
-    }
+    // Redirecionar para o Checkout Session URL
+    window.location.href = `https://checkout.stripe.com/c/pay/${sessionId}`
   } catch (error) {
     console.error('Error creating checkout session:', error)
     throw error
