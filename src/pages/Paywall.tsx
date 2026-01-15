@@ -13,28 +13,18 @@ export default function Paywall() {
 
   const handleSubscribe = async (plan: 'monthly' | 'annual') => {
     try {
-      // Simular processamento de pagamento
       toast({
-        title: 'Processando assinatura...',
+        title: 'Redirecionando para o pagamento...',
         description: 'Aguarde um momento',
       })
 
-      // Simular delay de processamento
-      await new Promise(resolve => setTimeout(resolve, 1500))
+      // Redirecionar para Stripe Checkout
+      const userId = localStorage.getItem('userId') || 'guest'
+      const { createCheckoutSession } = await import('@/lib/stripe')
 
-      // Ativar assinatura localmente
-      subscribe(plan)
-
-      toast({
-        title: '🎉 Assinatura ativada com sucesso!',
-        description: `Você agora é Premium ${plan === 'monthly' ? 'Mensal' : 'Anual'}`,
-      })
-
-      // Redirecionar para o dashboard após 1 segundo
-      setTimeout(() => {
-        navigate('/dashboard')
-      }, 1000)
+      await createCheckoutSession(userId, plan)
     } catch (error) {
+      console.error('Error:', error)
       toast({
         title: 'Erro ao processar pagamento',
         description: 'Tente novamente em alguns instantes',
