@@ -1,0 +1,26 @@
+{
+  "name": "AlphaCut - Consultoria de Estilo Masculino",
+  "short_name": "AlphaCut",
+  "description": "Consultoria de visagismo masculino baseada em IA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "health"],
+  "screenshots": []
+}

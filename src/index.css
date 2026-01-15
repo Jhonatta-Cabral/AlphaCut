@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+*/
+
+@layer base {
+  :root {
+    --background: rgb(255, 255, 255);
+    --foreground: rgb(9, 9, 12);
+
+    --card: rgb(255, 255, 255);
+    --card-foreground: rgb(9, 9, 12);
+
+    --popover: rgb(255, 255, 255);
+    --popover-foreground: rgb(9, 9, 12);
+
+    --primary: rgb(0, 123, 255);
+    --primary-foreground: rgb(250, 250, 250);
+
+    --secondary: rgb(245, 245, 245);
+    --secondary-foreground: rgb(23, 23, 28);
+
+    --muted: rgb(245, 245, 245);
+    --muted-foreground: rgb(115, 115, 120);
+
+    --accent: rgb(0, 123, 255);
+    --accent-foreground: rgb(23, 23, 28);
+
+    --destructive: rgb(239, 68, 68);
+    --destructive-foreground: rgb(250, 250, 250);
+
+    --border: rgb(229, 229, 234);
+    --input: rgb(229, 229, 234);
+    --ring: rgb(163, 163, 163);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: rgb(250, 250, 250);
+    --sidebar-foreground: rgb(63, 63, 70);
+    --sidebar-primary: rgb(23, 23, 28);
+    --sidebar-primary-foreground: rgb(250, 250, 250);
+    --sidebar-accent: rgb(244, 244, 245);
+    --sidebar-accent-foreground: rgb(23, 23, 28);
+    --sidebar-border: rgb(229, 231, 235);
+    --sidebar-ring: rgb(59, 130, 246);
+
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-heading: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  }
+
+  .dark {
+    --background: rgb(9, 9, 11);
+    --foreground: rgb(250, 250, 250);
+
+    --card: rgb(24, 24, 27);
+    --card-foreground: rgb(250, 250, 250);
+
+    --popover: rgb(24, 24, 27);
+    --popover-foreground: rgb(250, 250, 250);
+
+    --primary: rgb(37, 99, 235);
+    --primary-foreground: rgb(250, 250, 250);
+
+    --secondary: rgb(39, 39, 42);
+    --secondary-foreground: rgb(250, 250, 250);
+
+    --muted: rgb(39, 39, 42);
+    --muted-foreground: rgb(161, 161, 170);
+
+    --accent: rgb(37, 99, 235);
+    --accent-foreground: rgb(250, 250, 250);
+
+    --destructive: rgb(185, 28, 28);
+    --destructive-foreground: rgb(250, 250, 250);
+
+    --border: rgb(39, 39, 42);
+    --input: rgb(24, 24, 27);
+    --ring: rgb(37, 99, 235);
+
+    --sidebar-background: rgb(24, 24, 27);
+    --sidebar-foreground: rgb(244, 244, 245);
+    --sidebar-primary: rgb(37, 99, 235);
+    --sidebar-primary-foreground: rgb(255, 255, 255);
+    --sidebar-accent: rgb(39, 39, 42);
+    --sidebar-accent-foreground: rgb(244, 244, 245);
+    --sidebar-border: rgb(39, 39, 42);
+    --sidebar-ring: rgb(37, 99, 235);
+  }
+}
+@layer utilities {
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500;
+  }
+}
+
