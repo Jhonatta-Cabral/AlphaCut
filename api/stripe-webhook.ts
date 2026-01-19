@@ -85,7 +85,7 @@ export default async function handler(
       }
 
       case 'customer.subscription.updated': {
-        const subscription = event.data.object as Stripe.Subscription
+        const subscription = event.data.object as StripeSubWithPeriod
         const customerId = subscription.customer as string
 
         const { data: existingSub } = await supabase
