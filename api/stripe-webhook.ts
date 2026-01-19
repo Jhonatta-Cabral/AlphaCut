@@ -2,6 +2,11 @@ import type { VercelRequest, VercelResponse } from '@vercel/node'
 import Stripe from 'stripe'
 import { createClient } from '@supabase/supabase-js'
 
+type StripeSubWithPeriod = Stripe.Subscription & {
+  current_period_start: number
+  current_period_end: number
+}
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const supabase = createClient(
