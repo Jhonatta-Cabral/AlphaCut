@@ -75,8 +75,12 @@ export default async function handler(
           stripe_price_id: priceId,
           status: 'active',
           plan_type: planType,
-          current_period_start: new Date(subscription.current_period_start * 1000).toISOString(),
-          current_period_end: new Date(subscription.current_period_end * 1000).toISOString(),
+          current_period_start: subscription.current_period_start
+  ? new Date(subscription.current_period_start * 1000).toISOString()
+  : null,
+current_period_end: subscription.current_period_end
+  ? new Date(subscription.current_period_end * 1000).toISOString()
+  : null,
           cancel_at_period_end: false,
         })
 
