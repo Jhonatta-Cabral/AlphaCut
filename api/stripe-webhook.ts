@@ -61,9 +61,9 @@ export default async function handler(
           break
         }
 
-        const subscription = await stripe.subscriptions.retrieve(
-          session.subscription as string
-        )
+        const subscription = (await stripe.subscriptions.retrieve(
+  session.subscription as string
+)) as unknown as StripeSubWithPeriod
 
         const priceId = subscription.items.data[0].price.id
         const planType = priceId.includes('month') ? 'monthly' : 'annual'
