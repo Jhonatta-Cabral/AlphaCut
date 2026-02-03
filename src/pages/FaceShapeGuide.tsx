@@ -39,31 +39,29 @@ export default function FaceShapeGuide() {
           </p>
         </div>
 
-        {/* Imagem de Referência */}
+        {/* Introdução */}
         <Card className="bg-zinc-900 border-zinc-800 mb-8">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
               <Info className="w-5 h-5 text-blue-500" />
-              Referência Visual
+              Como Funciona a Análise
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="bg-zinc-950 p-4 rounded-lg">
-              <img
-                src="/formato-rosto-masculino.jpg"
-                alt="Referência dos 8 formatos de rosto masculino"
-                className="w-full rounded-lg"
-              />
-              <p className="text-xs text-zinc-500 mt-3 text-center">
-                Os 8 formatos de rosto masculino utilizados em nossa análise
-              </p>
-            </div>
+          <CardContent className="space-y-3 text-zinc-300">
+            <p>
+              Nosso sistema analisa as proporções do seu rosto para identificar qual dos 8 formatos principais
+              melhor se encaixa no seu caso. Essa classificação é fundamental para recomendar cortes de cabelo
+              que valorizem suas características naturais.
+            </p>
+            <p className="text-sm text-zinc-400">
+              A análise considera: largura da testa, maçãs do rosto, maxilar, comprimento total e formato do queixo.
+            </p>
           </CardContent>
         </Card>
 
         {/* Detalhes de Cada Formato */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-white">Características Detalhadas</h2>
+          <h2 className="text-2xl font-bold text-white">Os 8 Formatos de Rosto</h2>
 
           {faceShapes.map((shape) => {
             const data = faceShapeCharacteristics[shape]
