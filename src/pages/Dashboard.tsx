@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/contexts/AuthContext'
 import { useSubscription } from '@/contexts/SubscriptionContext'
-import { Camera, History, Target, BookOpen, User, Crown, Flame } from 'lucide-react'
+import { Camera, History, Target, BookOpen, User, Crown, Flame, Info } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 interface Analysis {
@@ -142,7 +142,18 @@ export default function Dashboard() {
         </Card>
 
         {/* Quick Actions */}
-        <div className="grid md:grid-cols-3 gap-4 mb-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <Card
+            className="bg-zinc-900 border-zinc-800 hover:border-zinc-700 cursor-pointer transition-all"
+            onClick={() => navigate('/face-shape-guide')}
+          >
+            <CardContent className="pt-6">
+              <Info className="w-8 h-8 text-blue-500 mb-3" />
+              <h3 className="font-semibold text-white mb-1">Formatos</h3>
+              <p className="text-sm text-zinc-400">Conheça os 8 tipos de rosto</p>
+            </CardContent>
+          </Card>
+
           <Card
             className="bg-zinc-900 border-zinc-800 hover:border-zinc-700 cursor-pointer transition-all"
             onClick={() => navigate('/habits')}

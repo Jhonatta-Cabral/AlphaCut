@@ -14,6 +14,7 @@ import HabitTracker from '@/pages/HabitTracker'
 import Tips from '@/pages/Tips'
 import Profile from '@/pages/Profile'
 import Paywall from '@/pages/Paywall'
+import FaceShapeGuide from '@/pages/FaceShapeGuide'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               <Route path="/tips" element={<Tips />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/paywall" element={<Paywall />} />
+              <Route path="/face-shape-guide" element={<FaceShapeGuide />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </BrowserRouter>

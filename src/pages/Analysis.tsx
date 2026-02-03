@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSubscription } from '@/contexts/SubscriptionContext'
 import { useToast } from '@/hooks/use-toast'
 import { Camera, Upload, ArrowLeft, Sparkles } from 'lucide-react'
+import { analyzeFaceShape, analyzeHairType } from '@/utils/faceAnalysis'
 
 export default function Analysis() {
   const [goal, setGoal] = useState('')
@@ -34,15 +35,20 @@ export default function Analysis() {
     }
   }
 
-  const analyzeFace = (_photoData: string): { faceShape: string; hairType: string } => {
-    // Simulação de análise de IA (em produção, isso seria uma API real)
-    const faceShapes = ['Oval', 'Retangular', 'Redondo', 'Quadrado', 'Triangular']
-    const hairTypes = ['Liso', 'Ondulado', 'Cacheado', 'Crespo']
+  const analyzeFace = (photoData: string) => {
+    // Análise baseada nos 8 formatos de rosto da referência
+    const faceAnalysis = analyzeFaceShape(photoData)
+    const hairAnalysis = analyzeHairType(photoData)
 
-    const faceShape = faceShapes[Math.floor(Math.random() * faceShapes.length)]
-    const hairType = hairTypes[Math.floor(Math.random() * hairTypes.length)]
-
-    return { faceShape, hairType }
+    return {
+      faceShape: faceAnalysis.faceShape,
+      hairType: hairAnalysis.type,
+      confidence: faceAnalysis.confidence,
+      characteristics: faceAnalysis.characteristics,
+      reason: faceAnalysis.reason,
+      hairTexture: hairAnalysis.texture,
+      hairDensity: hairAnalysis.density
+    }
   }
 
   const handleSubmit = async () => {
@@ -67,17 +73,22 @@ export default function Analysis() {
     setIsAnalyzing(true)
 
     // Simular análise de IA
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    await new Promise(resolve => setTimeout(resolve, 2500))
 
-    const { faceShape, hairType } = analyzeFace(photo)
+    const analysisResult = analyzeFace(photo)
 
-    // Salvar análise
+    // Salvar análise completa
     const analysis = {
       id: Date.now().toString(),
       date: new Date().toISOString(),
       goal: goals.find(g => g.value === goal)?.label || goal,
-      faceShape,
-      hairType,
+      faceShape: analysisResult.faceShape,
+      hairType: analysisResult.hairType,
+      confidence: analysisResult.confidence,
+      characteristics: analysisResult.characteristics,
+      reason: analysisResult.reason,
+      hairTexture: analysisResult.hairTexture,
+      hairDensity: analysisResult.hairDensity,
       photo
     }
 
