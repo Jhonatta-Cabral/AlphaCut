@@ -140,9 +140,10 @@ export const faceShapeCharacteristics: Record<FaceShape, {
  * Em produção, isso seria substituído por uma API de visão computacional
  * ou modelo de IA treinado para classificação de formatos de rosto
  */
-export function analyzeFaceShape(imageData: string): FaceAnalysisResult {
+export function analyzeFaceShape(_imageData: string): FaceAnalysisResult {
   // Simulação de análise de IA com distribuição realista
   // Em produção: usar TensorFlow.js, MediaPipe, ou API externa
+  // Nota: _imageData será usado quando integrarmos com API de visão computacional
 
   const shapes: FaceShape[] = [
     'Oval',      // 25% - formato mais comum
