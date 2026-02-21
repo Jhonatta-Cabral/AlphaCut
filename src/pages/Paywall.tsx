@@ -4,17 +4,40 @@ import { useNavigate } from 'react-router-dom'
 import { useToast } from '@/hooks/use-toast'
 import { Crown, Check, ArrowLeft, Zap } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function Paywall() {
   const navigate = useNavigate()
   const { toast } = useToast()
+  const { user } = useAuth()
 
   const handleSubscribe = async (plan: 'monthly' | 'annual') => {
-    try {
+  try {
+    if (!user?.id) {
       toast({
-        title: 'Redirecionando para o pagamento...',
-        description: 'Aguarde um momento',
+        title: 'Faça login para assinar',
+        description: 'Você precisa estar logado para continuar.',
+        variant: 'destructive'
       })
+      return
+    }
+
+    toast({
+      title: 'Redirecionando para o pagamento...',
+      description: 'Aguarde um momento',
+    })
+
+    const { createCheckoutSession } = await import('@/lib/stripe')
+    await createCheckoutSession(user.id, plan)
+  } catch (error) {
+    console.error('Error:', error)
+    toast({
+      title: 'Erro ao processar pagamento',
+      description: 'Tente novamente em alguns instantes',
+      variant: 'destructive'
+    })
+  }
+}
 
       // Redirecionar para Stripe Checkout
       const userId = localStorage.getItem('userId') || 'guest'
